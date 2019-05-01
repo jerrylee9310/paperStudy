@@ -1,0 +1,12 @@
+4.29
+  - I found out that data fidelity term(|d-Fu0|^2) is not converge with CG algorithm in the 'u0' minimization equation.
+      I guess that is because |d-Fu0| is not a positive definite. (SENSE recon, |d-FS*x| is pos-def due to S'F'FS gurantee the pos-def)
+        -> |u-Sx| term is converge. 
+           I think that means, the argmin minimisation try to find the solution in |u-Sx| term but close with |d-Fu0|.
+         
+  - After checking the reference code(fessler groups's code, https://github.com/ismrmrd/ismrmrd-paper)
+      -> They solve the inverse matrices of 2-norm by making a each(N,NL) size of matrix using that the denoted matrices are sparse.
+      -> I've tried to solve those equations using CG but I kept wondering the process what I've done.
+      "If we solve the one large scale problem with multiple small-scale using CG, which is also applied on large-scale problem, is it 
+      really effective way?". However, if we can convert the inverse matrix into just elemental-wise multiplication, the problem is in
+      a TOTALLY different approach and SUPER effective. 

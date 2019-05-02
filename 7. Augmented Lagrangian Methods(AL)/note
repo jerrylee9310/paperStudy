@@ -10,3 +10,25 @@
       "If we solve the one large scale problem with multiple small-scale using CG, which is also applied on large-scale problem, is it 
       really effective way?". However, if we can convert the inverse matrix into just elemental-wise multiplication, the problem is in
       a TOTALLY different approach and SUPER effective. 
+
+
+5.1
+  - CODE CODE CODE!
+  - wavelet function yield different result from mine. In this paper they emphasize on 'time-invariant' orthogonal wavelet and
+    thier code returns wavelet pictures which have same sizes in every wavelet level. I think they meant it.
+    
+    
+5.2
+  - GOAL : 
+        1. manipulate the reference code into most simple style, and try to establish a code step by step.
+        2. After done that, figure our what's the problems of my code.
+        
+  - raw data(k-data) =! FT(sosImg * sensitivity map)
+    I think) In SENSE-based solution gives more pretty solution with later data(FT(sosImg * smap)).
+              | smap  <--LPF--- [DATA] ---FT--> coilIm --SOS--> Img  |
+              |   S'           d = FSx+e                        (x') |
+             
+             As I mentioned, d =! FS'x'=d'
+             In this code, they try to find d' by manipulating the d with S'
+             Therefore, with Direct k-space data, the result quality is slightly degraded.
+              

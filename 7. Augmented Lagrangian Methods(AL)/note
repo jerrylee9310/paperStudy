@@ -1,34 +1,43 @@
 4.29
-  - I found out that data fidelity term(|d-Fu0|^2) is not converge with CG algorithm in the 'u0' minimization equation.
-      I guess that is because |d-Fu0| is not a positive definite. (SENSE recon, |d-FS*x| is pos-def due to S'F'FS gurantee the pos-def)
-        -> |u-Sx| term is converge. 
-           I think that means, the argmin minimisation try to find the solution in |u-Sx| term but close with |d-Fu0|.
+  - I found out that data fidelity term(|d-Fu0|^2) is not converging on the CG algorithm in the 'u0' minimization equation.
+      I guess that is because |d-Fu0| is not a positive definite. (SENSE recon, |d-FS*x| is pos-def due to S'F'FS guarantee the pos-def)
+        -> |u-Sx| term is converge. I think that means, the argmin minimisation tries to find the solution in |u-Sx| term 
+        under the constraint which enforces closeness with |d-Fu0|.
          
-  - After checking the reference code(fessler groups's code, https://github.com/ismrmrd/ismrmrd-paper)
-      -> They solve the inverse matrices of 2-norm by making a each(N,NL) size of matrix using that the denoted matrices are sparse.
+  - After checking the reference code(Fessler groups's code, https://github.com/ismrmrd/ismrmrd-paper)
+      -> They solve the inverse matrices of 2-norm by making an each(N,NL) size of a matrix using that the denoted matrices are sparse.
       -> I've tried to solve those equations using CG but I kept wondering the process what I've done.
-      "If we solve the one large scale problem with multiple small-scale using CG, which is also applied on large-scale problem, is it 
-      really effective way?". However, if we can convert the inverse matrix into just elemental-wise multiplication, the problem is in
-      a TOTALLY different approach and SUPER effective. 
+      "If we convert one large scale problem into multiple small-scale yet using CG, which is also applied on a large-scale problem, 
+      is it really effective way?". However, if we can convert the inverse matrix into just elemental-wise multiplication, 
+      the problem is in a TOTALLY different approach and SUPER effective. 
 
 
 5.1
   - CODE CODE CODE!
-  - wavelet function yield different result from mine. In this paper they emphasize on 'time-invariant' orthogonal wavelet and
-    thier code returns wavelet pictures which have same sizes in every wavelet level. I think they meant it.
+  - wavelet function yield different result from mine. In this paper, they emphasize on 'time-invariant' orthogonal wavelet and
+    their code returns wavelet pictures which have the same sizes in every wavelet level. I think they meant it.
     
     
 5.2
   - GOAL : 
-        1. manipulate the reference code into most simple style, and try to establish a code step by step.
-        2. After done that, figure our what's the problems of my code.
+        1. manipulate the reference code into the most simple style, and try to establish a code step by step.
+        2. After doing that, figure out what's the problems of my code.
         
   - raw data(k-data) =! FT(sosImg * sensitivity map)
-    I think) In SENSE-based solution gives more pretty solution with later data(FT(sosImg * smap)).
+    I think) In SENSE-based solution gives a more pretty solution with later data(FT(sosImg * smap)).
               | smap  <--LPF--- [DATA] ---FT--> coilIm --SOS--> Img  |
               |   S'           d = FSx+e                        (x') |
              
              As I mentioned, d =! FS'x'=d'
              In this code, they try to find d' by manipulating the d with S'
-             Therefore, with Direct k-space data, the result quality is slightly degraded.
+             Therefore, with RAW k-space data, the resulting quality is slightly degraded.
               
+5.3
+  - Completed modifying and understanding the reference code.
+  - Things to be understood
+      1. 'operatior notation' vs 'matrix notation'
+          1.1 Background knowledge on dealing with inverse matrices in the Fourier domain
+              (matrix multiplication(convolution I guess) <-> pixel-wise multiplication)
+          1.2 How to write down Inverse matrices' derivation into the matrix equation form?
+          
+          

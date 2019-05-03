@@ -42,6 +42,7 @@
           1.2 How to write down Inverse matrices' derivation into the matrix equation form?
       2. R matrix (R, R^H, frequency respose of R^H*R)
       3. soft threshold part
+      4. SWT vs DWT
       
   - After completing upper stuffs
       1. compare my code to ref (tic,toc usage / function organization / etc...)

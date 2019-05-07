@@ -47,3 +47,17 @@
   - After completing upper stuffs
       1. compare my code to ref (tic,toc usage / function organization / etc...)
       2. Figure out what was wrong on my primitive code.
+      
+   
+5.7
+  - Things to be understood
+    1. 'frequency response'
+    2. R matrix
+    3. SWT vs DWT
+    
+  - After stuffs
+    1. Reference code review
+    2. Code checkout
+      2.1 x,u2 minimisation part work by using CG, u1 also gives identical result -> u0 minimization
+    
+    

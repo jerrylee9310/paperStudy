@@ -58,6 +58,6 @@
   - After stuffs
     1. Reference code review
     2. Code checkout
-      2.1 x,u2 minimisation part work by using CG, u1 also gives identical result -> u0 minimization
+      2.1 u0, x,u2 minimisation part work by using CG, u1 also gives identical result -> Check from the bottom line
     
     

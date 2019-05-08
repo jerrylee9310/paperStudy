@@ -59,5 +59,15 @@
     1. Reference code review
     2. Code checkout
       2.1 u0, x,u2 minimisation part work by using CG, u1 also gives identical result -> Check from the bottom line
-    
+      
+
+5.8
+  - TODO
+    1. My code check
+      1.1 P1 re-code, see the effects of regularisor weighting(lambda) and mu(penalty weight)
+      1.2 Re-check the effects of regularisor weighting(lambda) and mu(penalty weight) on P2 
+            => manipulate regularisor part to have R choosing option.
+    2. wavelet
+      2.1 shift invariant(SWT vs DWT)
+      2.2 frequency response part
     

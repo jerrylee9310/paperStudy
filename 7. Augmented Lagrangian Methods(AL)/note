@@ -71,3 +71,12 @@
       2.1 shift invariant(SWT vs DWT)
       2.2 frequency response part
     
+
+5.9
+  - Fourier is not LTI system. but F'F is LTI system whether that is doing undersampling or not and that's why we try to get PSF(impulse response of FhF system).
+      Therefore, if some matrix is toeplitz form(LTI, technically TI but matrix itself has linear property), 'toeplitz matrix X vector'
+      form is identical with "'convolution kernel' * vector" form ( toeplitz matrix = circular allignment of conv kernel)
+      And that means, it can be expressed as "frequency response(=fft(kernel)) X fft(vector)"
+      
+  - So, I don't think R's time invariant-ness is important if RhR's time-invariant is guaranteed when it comes to frequency response
+  
